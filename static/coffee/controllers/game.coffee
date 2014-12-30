@@ -12,9 +12,9 @@ angular.module 'ClsApp'
 
 		Game.initialize = ->
 			Game.grid = []
-			for j in [0...Game.width]
+			for j in [0...Game.length]
 				row = []
-				for i in [0...Game.length]
+				for i in [0...Game.width]
 					row.push({'activated': false, 'x':i, 'y':j})
 				Game.grid.push(row)
 
@@ -52,7 +52,7 @@ angular.module 'ClsApp'
 				tile = Game.grid[y][x+1]
 				tile.activated = ! tile.activated
 
-			Game.initialize() if Game.over()
+			Game.levelUp() & Game.initialize() if Game.over()
 
 		Game.over = ->
 			for row in Game.grid
@@ -60,6 +60,30 @@ angular.module 'ClsApp'
 					if column.activated
 						return false
 			true
+
+		Game.levelUp = ->
+			powerUps = []
+
+			if Game.width < Game.clicksLength and Game.width < 12
+				powerUps.push(0)
+			if Game.length < Game.clicksLength
+				powerUps.push(1)
+			if Game.clicksLength < Game.width*Game.length / 2
+				powerUps.push(2)
+
+			shuffle(powerUps)
+
+			switch powerUps[0]
+				when 0
+					Game.length++
+				when 1
+					if Game.width < 12
+						Game.width++
+				when 2
+					if Game.clicksLength < Game.width*Game.length / 2
+						Game.clicksLength++
+
+			Game.level++
 
 		Game.range = (x) ->
 		  if x < 0

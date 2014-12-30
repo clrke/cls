@@ -6,10 +6,19 @@
 {% endblock %}
 
 {% block content %}
-	<div class="row">
-		<div class="small-12 columns"> <h1> Hello {{ user }} </h1> </div>
-	</div>
 	<div ng-controller="GameCtrl as Game">
+		<div class="row">
+			<div class="small-6 columns"> <h1> Hello {{ user }} </h1> </div>
+			<div class="small-6 columns">
+				<h1> Stats </h1>
+				<ul>
+					<li> Level: {[ Game.level ]} </li>
+					<li> Length: {[ Game.length ]} </li>
+					<li> Width: {[ Game.width ]} </li>
+					<li> Clicks: {[ Game.clicksLength ]} </li>
+				</ul>
+			</div>
+		</div>
 		<div class="row">
 			<button class="small-12 button large expand" ng-hide="Game.grid" ng-click="Game.initialize()">
 				Play!

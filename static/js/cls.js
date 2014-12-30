@@ -20,9 +20,9 @@
       Game.initialize = function() {
         var i, j, row, _i, _j, _ref, _ref1;
         Game.grid = [];
-        for (j = _i = 0, _ref = Game.width; 0 <= _ref ? _i < _ref : _i > _ref; j = 0 <= _ref ? ++_i : --_i) {
+        for (j = _i = 0, _ref = Game.length; 0 <= _ref ? _i < _ref : _i > _ref; j = 0 <= _ref ? ++_i : --_i) {
           row = [];
-          for (i = _j = 0, _ref1 = Game.length; 0 <= _ref1 ? _j < _ref1 : _j > _ref1; i = 0 <= _ref1 ? ++_j : --_j) {
+          for (i = _j = 0, _ref1 = Game.width; 0 <= _ref1 ? _j < _ref1 : _j > _ref1; i = 0 <= _ref1 ? ++_j : --_j) {
             row.push({
               'activated': false,
               'x': i,
@@ -71,7 +71,7 @@
           tile.activated = !tile.activated;
         }
         if (Game.over()) {
-          return Game.initialize();
+          return Game.levelUp() & Game.initialize();
         }
       };
       Game.over = function() {
@@ -87,6 +87,35 @@
           }
         }
         return true;
+      };
+      Game.levelUp = function() {
+        var powerUps;
+        powerUps = [];
+        if (Game.width < Game.clicksLength && Game.width < 12) {
+          powerUps.push(0);
+        }
+        if (Game.length < Game.clicksLength) {
+          powerUps.push(1);
+        }
+        if (Game.clicksLength < Game.width * Game.length / 2) {
+          powerUps.push(2);
+        }
+        shuffle(powerUps);
+        switch (powerUps[0]) {
+          case 0:
+            Game.length++;
+            break;
+          case 1:
+            if (Game.width < 12) {
+              Game.width++;
+            }
+            break;
+          case 2:
+            if (Game.clicksLength < Game.width * Game.length / 2) {
+              Game.clicksLength++;
+            }
+        }
+        return Game.level++;
       };
       Game.range = function(x) {
         if (x < 0) {
