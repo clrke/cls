@@ -1,3 +1,4 @@
-body {
-	margin: 30px;
+.no-margin {
+	margin: 0px;
+	padding: 0px;
 }

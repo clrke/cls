@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-	Hello {{ user }}
+	<div class="row">
+		<div class="small-12 columns"> <h1> Hello {{ user }} </h1> </div>
+	</div>
+	{% verbatim %}
+		<div ng-app>
+			<div class="row" ng-repeat="j in 'xxxxxxxxxxxx' track by $index">
+				<div class="small-1 columns no-margin" ng-repeat="i in 'xxxxxxxxxxxx' track by $index">
+					<button class="button large expand no-margin"></button>
+				</div>
+			</div>
+		</div>
+	{% endverbatim %}
 {% endblock %}
