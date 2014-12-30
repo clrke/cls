@@ -70,10 +70,6 @@ DATABASES = {
     }
 }
 
-if os.environ['DJANGO_ENVIRONMENT'] == 'production':
-    import dj_database_url
-    DATABASES['default'] =  dj_database_url.config()
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -94,3 +90,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 TEMPLATE_DIRS = ['templates/']
 STATICFILES_DIRS = ['static/']
+
+if os.environ['DJANGO_ENVIRONMENT'] == 'production':
+    import dj_database_url
+    DATABASES['default'] =  dj_database_url.config()
+    DEBUG = False
