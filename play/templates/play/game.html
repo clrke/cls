@@ -1,16 +1,26 @@
 {% extends "base.html" %}
 
+{% block css.js %}
+	{% load staticfiles %}
+	<script type="text/javascript" src="{% static 'js/cls.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 	<div class="row">
 		<div class="small-12 columns"> <h1> Hello {{ user }} </h1> </div>
 	</div>
-	{% verbatim %}
-		<div ng-app>
-			<div class="row" ng-repeat="j in 'xxxxxxxxxxxx' track by $index">
-				<div class="small-1 columns no-margin" ng-repeat="i in 'xxxxxxxxxxxx' track by $index">
-					<button class="button large expand no-margin"></button>
-				</div>
+	<div ng-controller="GameCtrl as Game">
+		<div class="row">
+			<button class="small-12 button large expand" ng-hide="Game.grid" ng-click="Game.initialize()">
+				Play!
+			</button>
+		</div>
+		<div class="row" ng-repeat="row in Game.grid">
+			<div class="small-1 columns no-margin" ng-repeat="column in row">
+				<button class="button large expand no-margin" ng-class="{'secondary':!column.activated}" ng-click="Game.activate(column.x, column.y)"> &nbsp; </button>
+			</div>
+			<div class="small-1 columns" ng-repeat="empty in Game.range(12-row.length) track by $index">
 			</div>
 		</div>
-	{% endverbatim %}
+	</div>
 {% endblock %}
