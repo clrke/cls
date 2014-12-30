@@ -3,6 +3,8 @@
 	<head>
 		<title> Clear Screen </title>
 
+		{% load staticfiles %}
+
 		<!-- AngularJS -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
 
@@ -11,12 +13,10 @@
 		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 		<!-- Zurb Foundation -->
-		<script type="text/javascript" src="http://cdn.foundation5.zurb.com/foundation.js"></script>
-
-		<link rel="stylesheet" type="text/css" href="http://cdn.foundation5.zurb.com/foundation.css">
+		<script type="text/javascript" src="{% static 'foundation/js/foundation.min.js' %}"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'foundation/css/foundation.min.css' %}">
 
 		<!-- Custom CSS/JS -->
-		{% load staticfiles %}
 		<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
 		{% block css.js %}
