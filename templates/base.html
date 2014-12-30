@@ -1,0 +1,29 @@
+<!DOCTYPE>
+<html ng-app>
+	<head>
+		<title> Clear Screen </title>
+
+		<!-- AngularJS -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+
+		<!-- JQuery -->
+		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+		<!-- Zurb Foundation -->
+		<script type="text/javascript" src="http://cdn.foundation5.zurb.com/foundation.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="http://cdn.foundation5.zurb.com/foundation.css">
+
+		<!-- Custom CSS/JS -->
+		{% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+		{% block css.js %}
+		{% endblock %}
+	</head>
+	<body>
+		{% block content %}
+		{% endblock %}
+	</body>
+</html>
