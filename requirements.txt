@@ -1,4 +1,5 @@
 django == 1.7.1
 dj-static
 dj-database-url
+psycopg2
 gunicorn
