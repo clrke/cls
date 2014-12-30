@@ -75,13 +75,11 @@ angular.module 'ClsApp'
 
 			switch powerUps[0]
 				when 0
-					Game.length++
+					Game.width++
 				when 1
-					if Game.width < 12
-						Game.width++
+					Game.length++
 				when 2
-					if Game.clicksLength < Game.width*Game.length / 2
-						Game.clicksLength++
+					Game.clicksLength++
 
 			Game.level++
 

@@ -103,17 +103,13 @@
         shuffle(powerUps);
         switch (powerUps[0]) {
           case 0:
-            Game.length++;
+            Game.width++;
             break;
           case 1:
-            if (Game.width < 12) {
-              Game.width++;
-            }
+            Game.length++;
             break;
           case 2:
-            if (Game.clicksLength < Game.width * Game.length / 2) {
-              Game.clicksLength++;
-            }
+            Game.clicksLength++;
         }
         return Game.level++;
       };
