@@ -144,7 +144,7 @@
         bottomleft = (_ref5 = Game.grid[y + 1]) != null ? _ref5[x - 1] : void 0;
         bottomright = (_ref6 = Game.grid[y + 1]) != null ? _ref6[x + 1] : void 0;
         return {
-          'secondary': !tile.activated,
+          'game-bg': !tile.activated,
           'success': !tile.activated && hovered(tile),
           'info': tile.activated && hovered(tile),
           'round-tl': (!tile.activated !== !hovered(tile)) && !(!(topleft != null ? topleft.activated : void 0) !== !hovered(topleft)) && !(!(top != null ? top.activated : void 0) !== !hovered(top)) && !(!(left != null ? left.activated : void 0) !== !hovered(left)),

@@ -115,7 +115,7 @@ angular.module 'ClsApp'
 			bottomright = Game.grid[y+1]?[x+1]
 
 			{
-				'secondary':
+				'game-bg':
 					! tile.activated
 				'success':
 					! tile.activated and hovered(tile)

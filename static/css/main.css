@@ -4,7 +4,11 @@
 }
 
 .game-bg {
-	background-color: #e7e7e7;
+	background-color: #fff;
+}
+
+.game-bg:focus {
+	background-color: #fff;
 }
 
 .round-tl {
