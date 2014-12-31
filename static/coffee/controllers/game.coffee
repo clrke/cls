@@ -89,22 +89,59 @@ angular.module 'ClsApp'
 		  else
 		    return new Array(x)
 
+		hovered = (tile) ->
+			return false if not tile
+
+			[x, y] = [tile.x, tile.y]
+
+			top = Game.grid[y-1]?[x]
+			bottom = Game.grid[y+1]?[x]
+			left = Game.grid[y][x-1]
+			right = Game.grid[y][x+1]
+
+			tile.over or left?.over or right?.over or top?.over or bottom?.over
+
 		Game.classOf = (tile) ->
 			[x, y] = [tile.x, tile.y]
+
+			top = Game.grid[y-1]?[x]
+			bottom = Game.grid[y+1]?[x]
+			left = Game.grid[y][x-1]
+			right = Game.grid[y][x+1]
+
+			topleft = Game.grid[y-1]?[x-1]
+			topright = Game.grid[y-1]?[x+1]
+			bottomleft = Game.grid[y+1]?[x-1]
+			bottomright = Game.grid[y+1]?[x+1]
+
 			{
-				'secondary': ! tile.activated
+				'secondary':
+					! tile.activated
+				'success':
+					! tile.activated and hovered(tile)
+				'info':
+					tile.activated and hovered(tile)
 				'round-tl':
-					! Game.grid[y-1]?[x-1]?.activated and tile.activated and
-					! Game.grid[y-1]?[x]?.activated and ! Game.grid[y]?[x-1]?.activated
+					(!tile.activated != !hovered(tile)) and
+					! (!topleft?.activated != !hovered(topleft)) and
+					! (!top?.activated != !hovered(top)) and
+					! (!left?.activated != !hovered(left))
 				'round-tr':
-					! Game.grid[y-1]?[x+1]?.activated and tile.activated and
-					! Game.grid[y-1]?[x]?.activated and ! Game.grid[y]?[x+1]?.activated
+					(!tile.activated != !hovered(tile)) and
+					! (!topright?.activated != !hovered(topright)) and
+					! (!top?.activated != !hovered(top)) and
+					! (!right?.activated != !hovered(right))
 				'round-bl':
-					! Game.grid[y+1]?[x-1]?.activated and tile.activated and
-					! Game.grid[y+1]?[x]?.activated and ! Game.grid[y]?[x-1]?.activated
+					(!tile.activated != !hovered(tile)) and
+					! (!bottomleft?.activated != !hovered(bottomleft)) and
+					! (!bottom?.activated != !hovered(bottom)) and
+					! (!left?.activated != !hovered(left))
 				'round-br':
-					! Game.grid[y+1]?[x+1]?.activated and tile.activated and
-					! Game.grid[y+1]?[x]?.activated and ! Game.grid[y]?[x+1]?.activated
+					(!tile.activated != !hovered(tile)) and
+					! (!bottomright?.activated != !hovered(bottomright)) and
+					! (!bottom?.activated != !hovered(bottom)) and
+					! (!right?.activated != !hovered(right))
 			}
+
 		"GameCtrl"
 	]
