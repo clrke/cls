@@ -26,3 +26,19 @@
 .round-bl {
 	border-bottom-left-radius: 100px;
 }
+
+.border-top {
+	border-top: 5px solid;
+}
+
+.border-bottom {
+	border-bottom: 5px solid;
+}
+
+.border-left {
+	border-left: 5px solid;
+}
+
+.border-right {
+	border-right: 5px solid;
+}
