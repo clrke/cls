@@ -120,6 +120,17 @@
           return new Array(x);
         }
       };
+      Game.classOf = function(tile) {
+        var x, y, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+        _ref = [tile.x, tile.y], x = _ref[0], y = _ref[1];
+        return {
+          'secondary': !tile.activated,
+          'round-tl': !((_ref1 = Game.grid[y - 1]) != null ? (_ref2 = _ref1[x - 1]) != null ? _ref2.activated : void 0 : void 0) && tile.activated && !((_ref3 = Game.grid[y - 1]) != null ? (_ref4 = _ref3[x]) != null ? _ref4.activated : void 0 : void 0) && !((_ref5 = Game.grid[y]) != null ? (_ref6 = _ref5[x - 1]) != null ? _ref6.activated : void 0 : void 0),
+          'round-tr': !((_ref7 = Game.grid[y - 1]) != null ? (_ref8 = _ref7[x + 1]) != null ? _ref8.activated : void 0 : void 0) && tile.activated && !((_ref9 = Game.grid[y - 1]) != null ? (_ref10 = _ref9[x]) != null ? _ref10.activated : void 0 : void 0) && !((_ref11 = Game.grid[y]) != null ? (_ref12 = _ref11[x + 1]) != null ? _ref12.activated : void 0 : void 0),
+          'round-bl': !((_ref13 = Game.grid[y + 1]) != null ? (_ref14 = _ref13[x - 1]) != null ? _ref14.activated : void 0 : void 0) && tile.activated && !((_ref15 = Game.grid[y + 1]) != null ? (_ref16 = _ref15[x]) != null ? _ref16.activated : void 0 : void 0) && !((_ref17 = Game.grid[y]) != null ? (_ref18 = _ref17[x - 1]) != null ? _ref18.activated : void 0 : void 0),
+          'round-br': !((_ref19 = Game.grid[y + 1]) != null ? (_ref20 = _ref19[x + 1]) != null ? _ref20.activated : void 0 : void 0) && tile.activated && !((_ref21 = Game.grid[y + 1]) != null ? (_ref22 = _ref21[x]) != null ? _ref22.activated : void 0 : void 0) && !((_ref23 = Game.grid[y]) != null ? (_ref24 = _ref23[x + 1]) != null ? _ref24.activated : void 0 : void 0)
+        };
+      };
       return "GameCtrl";
     }
   ]);

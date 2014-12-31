@@ -2,3 +2,23 @@
 	margin: 0px;
 	padding: 0px;
 }
+
+.game-bg {
+	background-color: #e7e7e7;
+}
+
+.round-tl {
+	border-top-left-radius: 100px;
+}
+
+.round-tr {
+	border-top-right-radius: 100px;
+}
+
+.round-br {
+	border-bottom-right-radius: 100px;
+}
+
+.round-bl {
+	border-bottom-left-radius: 100px;
+}

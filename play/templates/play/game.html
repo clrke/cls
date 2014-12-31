@@ -25,8 +25,8 @@
 			</button>
 		</div>
 		<div class="row" ng-repeat="row in Game.grid">
-			<div class="small-1 columns no-margin" ng-repeat="column in row">
-				<button class="button large expand no-margin" ng-class="{'secondary':!column.activated}" ng-click="Game.activate(column.x, column.y)"> &nbsp; </button>
+			<div class="small-1 columns no-margin game-bg" ng-repeat="column in row">
+				<button class="button large expand no-margin" ng-class="Game.classOf(column)" ng-click="Game.activate(column.x, column.y)"> &nbsp; </button>
 			</div>
 			<div class="small-1 columns" ng-repeat="empty in Game.range(12-row.length) track by $index">
 			</div>

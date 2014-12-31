@@ -89,5 +89,22 @@ angular.module 'ClsApp'
 		  else
 		    return new Array(x)
 
+		Game.classOf = (tile) ->
+			[x, y] = [tile.x, tile.y]
+			{
+				'secondary': ! tile.activated
+				'round-tl':
+					! Game.grid[y-1]?[x-1]?.activated and tile.activated and
+					! Game.grid[y-1]?[x]?.activated and ! Game.grid[y]?[x-1]?.activated
+				'round-tr':
+					! Game.grid[y-1]?[x+1]?.activated and tile.activated and
+					! Game.grid[y-1]?[x]?.activated and ! Game.grid[y]?[x+1]?.activated
+				'round-bl':
+					! Game.grid[y+1]?[x-1]?.activated and tile.activated and
+					! Game.grid[y+1]?[x]?.activated and ! Game.grid[y]?[x-1]?.activated
+				'round-br':
+					! Game.grid[y+1]?[x+1]?.activated and tile.activated and
+					! Game.grid[y+1]?[x]?.activated and ! Game.grid[y]?[x+1]?.activated
+			}
 		"GameCtrl"
 	]
