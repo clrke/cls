@@ -25,8 +25,8 @@
 			</button>
 		</div>
 		<div class="row" ng-repeat="row in Game.grid" ng-init="parentFirst = $first; parentLast = $last">
-			<div class="small-1 columns no-margin game-bg" ng-repeat="column in row" ng-class="{'border-left': $first, 'border-right': $last, 'border-top': parentFirst, 'border-bottom': parentLast}">
-				<button class="button large expand no-margin" ng-mouseenter="column.over = true" ng-mouseleave="column.over = false" ng-class="Game.classOf(column)" ng-click="Game.activate(column.x, column.y); column.over = false"> &nbsp; </button>
+			<div class="small-1 columns no-margin game-bg" ng-repeat="column in row" ng-class="{'border-left': $first, 'border-right': $last, 'border-top': parentFirst, 'border-bottom': parentLast}" ng-mouseenter="column.over = true" ng-mouseleave="column.over = false" ng-click="Game.activate(column.x, column.y); column.over = false">
+				<button class="button large expand no-margin" ng-class="Game.classOf(column)"> &nbsp; </button>
 			</div>
 			<div class="small-1 columns" ng-repeat="empty in Game.range(12-row.length) track by $index">
 			</div>
